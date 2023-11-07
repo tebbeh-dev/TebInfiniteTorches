@@ -1,6 +1,6 @@
 # InfiniteTorches
-Created by tebbeh 
-Discord: tebbeh#0933
+- Created by tebbeh 
+- Discord: tebbeh#0933
 
 # Introduction
 Makes its possible to make fireplaces / fire sources infinite and also possible to block weather like rain and wind.
@@ -9,8 +9,8 @@ Makes its possible to make fireplaces / fire sources infinite and also possible 
 This mod needs to be on the client to work. Config Syncing is included with Jotunn. Install on the server to enforce the same mod configuration for all players.
 
 # Requirements
-BepInEx - https://valheim.thunderstore.io/package/denikson/BepInExPack_Valheim/
-Jotunn - https://valheim.thunderstore.io/package/ValheimModding/Jotunn/
+- BepInEx - https://valheim.thunderstore.io/package/denikson/BepInExPack_Valheim/
+- Jotunn - https://valheim.thunderstore.io/package/ValheimModding/Jotunn/
 
 # Changelog
 
