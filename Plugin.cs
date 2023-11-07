@@ -12,7 +12,6 @@ namespace TebInfiniteTorches
 {
     [BepInDependency(Jotunn.Main.ModGuid)]
     [BepInPlugin(ModGUID, ModName, ModVersion)]
-    [BepInProcess("valheim.exe")]
     public class Plugin : BaseUnityPlugin
     {
 
@@ -51,18 +50,6 @@ namespace TebInfiniteTorches
             return description + (synchronizedSetting ? " [Synced with Server]" : " [Not Synced with Server]");
         }
 
-        private static void PrefixIsBurning(Fireplace __instance)
-        {
-            if (Plugin.GetInfiniteFuel())
-            {
-                __instance.m_infiniteFuel = true;
-            }
-            else
-            {
-                __instance.m_infiniteFuel = false;
-            }
-        }
-
         #endregion
 
         void Awake()
@@ -87,11 +74,6 @@ namespace TebInfiniteTorches
             HarmonyInstance.PatchAll(assembly);
 
             SetupWatcher();
-
-            HarmonyInstance.Patch(
-                 AccessTools.Method(typeof(Fireplace), nameof(Fireplace.IsBurning)),
-                 prefix: new HarmonyMethod(typeof(HarmonyPatches), nameof(HarmonyPatches.PrefixIsBurning))
-             );
         }
 
         private void OnDestroy()

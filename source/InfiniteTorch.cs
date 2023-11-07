@@ -4,30 +4,38 @@ using HarmonyLib;
 
 namespace TebInfiniteTorches
 {
-    public static class HarmonyPatches
+    /// <summary>
+    /// Set fireplaces to have infinite fuel when they load
+    /// </summary>
+    [HarmonyPatch(typeof(Fireplace), nameof(Fireplace.Awake))]
+    static class InfiniteFuel
     {
-        public static void PrefixIsBurning(Fireplace __instance)
+        [HarmonyPostfix]
+        static void InfiniteFuelPrefix(Fireplace __instance)
         {
             if (Plugin.GetInfiniteFuel())
             {
                 __instance.m_infiniteFuel = true;
             }
-            else
-            {
-                __instance.m_infiniteFuel = false;
-            }
         }
+    }
 
-        public static void PrefixWet(Fireplace __instance)
+    /// <summary>
+    /// Change the result of the CheckWet method
+    /// </summary>
+    [HarmonyPatch(typeof(Fireplace), nameof(Fireplace.CheckWet))]
+    static class WeatherBlock
+    {
+        [HarmonyPrefix]
+        static bool WeatherBlockPrefix(Fireplace __instance)
         {
             if (Plugin.GetWeather())
             {
                 __instance.m_wet = false;
+                return false;
             }
-            else
-            {
-                __instance.m_wet = true;
-            }
+
+            return true;
         }
     }
 }
