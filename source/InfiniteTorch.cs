@@ -1,12 +1,8 @@
-﻿using System.Collections.Generic;
-using BepInEx;
-using HarmonyLib;
+﻿using HarmonyLib;
 
 namespace TebInfiniteTorches
 {
-    /// <summary>
-    /// Set fireplaces to have infinite fuel when they load
-    /// </summary>
+    // Set fireplaces to have infinite fuel when they load
     [HarmonyPatch(typeof(Fireplace), nameof(Fireplace.Awake))]
     static class InfiniteFuel
     {
@@ -20,9 +16,7 @@ namespace TebInfiniteTorches
         }
     }
 
-    /// <summary>
-    /// Change the result of the CheckWet method
-    /// </summary>
+    // Change the result of the CheckWet method
     [HarmonyPatch(typeof(Fireplace), nameof(Fireplace.CheckWet))]
     static class WeatherBlock
     {

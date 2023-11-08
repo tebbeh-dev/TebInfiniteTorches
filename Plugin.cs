@@ -7,6 +7,7 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using UnityEngine;
+using Jotunn.Managers;
 
 namespace TebInfiniteTorches
 {
@@ -16,7 +17,7 @@ namespace TebInfiniteTorches
     {
 
         private const string ModName = "tebbehInfiniteTorches";
-        private const string ModVersion = "0.1.0";
+        private const string ModVersion = "0.1.1";
         private const string Author = "com.tebbeh.mod";
         private const string ModGUID = Author + "." + ModName;
         private static string ConfigFileName = ModGUID + ".cfg";
@@ -68,12 +69,23 @@ namespace TebInfiniteTorches
 
             #endregion
 
-            InfiniteTorchesLogger.LogInfo("Thanks for using my InfiniteTorches Mod");
-
             Assembly assembly = Assembly.GetExecutingAssembly();
             HarmonyInstance.PatchAll(assembly);
 
             SetupWatcher();
+
+            /// Print config sync for debug
+            /// 
+            /// InfiniteTorchesLogger.LogInfo("Thanks for using my InfiniteTorches Mod");
+            /// InfiniteTorchesLogger.LogInfo("AdminByPass Config set to:" + " " + Plugin.GetAdminBypass());
+            /// InfiniteTorchesLogger.LogInfo("InfiniteFuel Config set to:" + " " + Plugin.GetInfiniteFuel());
+            /// InfiniteTorchesLogger.LogInfo("WeatherBlock Config set to:" + " " + Plugin.GetWeather());
+
+            ///SynchronizationManager.OnConfigurationSynchronized += (sender, args) => {
+            ///    InfiniteTorchesLogger.LogInfo("AdminBypass: " + AdminBypass.Value);
+            ///    InfiniteTorchesLogger.LogInfo("InfiniteFuel: " + infiniteFuel.Value);
+            ///    InfiniteTorchesLogger.LogInfo("WeatherBlock: " + weatherBlock.Value);
+            ///};
         }
 
         private void OnDestroy()

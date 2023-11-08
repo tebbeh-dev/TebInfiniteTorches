@@ -13,9 +13,8 @@ This mod needs to be on the client to work. Config Syncing is included with Jotu
 - Jotunn - https://valheim.thunderstore.io/package/ValheimModding/Jotunn/
 
 # Changelog
-
-0.1.0
-First release
+- 0.1.1 | Patching issue fixed
+- 0.1.0 | First release
 
 # Contributing
 - All issues can be reported on the project Github. To report issues please be as specific as possible and provide the following:
